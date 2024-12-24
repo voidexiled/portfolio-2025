@@ -1,0 +1,152 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@plugin "tailwindcss-animate";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-serif: "Geist", serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
+@layer base {
+  :root {
+    --base-1: hsl(30, 50%, 99.22%);
+    --base-2: hsl(30, 50%, 97.65%);
+    --base-3: hsl(28, 45.45%, 93.53%);
+    --base-4: hsl(28.7, 43.4%, 89.61%);
+    --base-5: hsl(29.1, 45.21%, 85.69%);
+    --base-6: hsl(29.33, 45.45%, 80.59%);
+    --base-7: hsl(28.52, 46.56%, 74.31%);
+    --base-8: hsl(27.75, 44.94%, 65.1%);
+    --base-9: hsl(27.53, 34.14%, 51.18%);
+    --base-10: hsl(26.49, 31.69%, 47.65%);
+    --base-11: hsl(24.41, 29.65%, 39.02%);
+    --base-12: hsl(18.75, 14.81%, 21.18%);
+    --accent-1: hsl(40, 60%, 99.02%);
+    --accent-2: hsl(51.43, 91.3%, 95.49%);
+    --accent-3: hsl(52.13, 100%, 88.04%);
+    --accent-4: hsl(49.7, 100%, 80.59%);
+    --accent-5: hsl(50, 94.29%, 72.55%);
+    --accent-6: hsl(46.41, 84.21%, 70.2%);
+    --accent-7: hsl(42.22, 75.42%, 64.9%);
+    --accent-8: hsl(38.02, 74.78%, 54.9%);
+    --accent-9: hsl(42.06, 100%, 61.96%);
+    --accent-10: hsl(42.08, 100%, 54.71%);
+    --accent-11: hsl(35.09, 100%, 33.53%);
+    --accent-12: hsl(24, 39.82%, 22.16%);
+    --background: hsl(30, 50%, 99.22%);
+    --foreground: hsl(18.75, 14.81%, 21.18%);
+    --card: hsl(30, 50%, 97.65%);
+    --card-foreground: hsl(18.75, 14.81%, 21.18%);
+    --popover: hsl(30, 50%, 99.22%);
+    --popover-foreground: hsl(18.75, 14.81%, 21.18%);
+    --primary: hsl(51.76, 100%, 50%);
+    --primary-foreground: hsl(42, 39.22%, 20%);
+    --secondary: hsl(30, 50%, 97.65%);
+    --secondary-foreground: hsl(24.41, 29.65%, 39.02%);
+    --muted: hsl(30, 50%, 97.65%);
+    --muted-foreground: hsl(24.41, 29.65%, 39.02%);
+    --accent: hsl(42.08, 100%, 54.71%);
+    --accent-foreground: hsl(24, 39.82%, 22.16%);
+    --destructive: hsl(358.48, 69.3%, 55.29%);
+    --destructive-foreground: hsl(350.65, 62.6%, 24.12%);
+    --border: hsl(29.33, 45.45%, 80.59%);
+    --input: hsl(29.33, 45.45%, 80.59%);
+    --ring: hsl(29.33, 45.45%, 80.59%);
+    --radius: 0.5rem;
+  }
+  .dark {
+    --base-1: hsl(40, 9.09%, 6.47%);
+    --base-2: hsl(20, 12%, 9.8%);
+    --base-3: hsl(21.82, 15.94%, 13.53%);
+    --base-4: hsl(26.25, 19.05%, 16.47%);
+    --base-5: hsl(24.55, 21.57%, 20%);
+    --base-6: hsl(26, 24.19%, 24.31%);
+    --base-7: hsl(25.5, 25.97%, 30.2%);
+    --base-8: hsl(27.78, 27.84%, 38.04%);
+    --base-9: hsl(27.53, 34.14%, 51.18%);
+    --base-10: hsl(27.41, 36.32%, 56.27%);
+    --base-11: hsl(27.89, 49.65%, 71.96%);
+    --base-12: hsl(34.5, 60.61%, 87.06%);
+    --accent-1: hsl(36, 29.41%, 6.67%);
+    --accent-2: hsl(38.57, 31.82%, 8.63%);
+    --accent-3: hsl(36, 71.43%, 10.98%);
+    --accent-4: hsl(37.14, 100%, 12.35%);
+    --accent-5: hsl(37.4, 100%, 15.1%);
+    --accent-6: hsl(38.62, 89.69%, 19.02%);
+    --accent-7: hsl(36.82, 63.77%, 27.06%);
+    --accent-8: hsl(35.89, 59.78%, 35.1%);
+    --accent-9: hsl(42.06, 100%, 61.96%);
+    --accent-10: hsl(49.96, 100%, 51.96%);
+    --accent-11: hsl(46.35, 100%, 54.31%);
+    --accent-12: hsl(41.05, 100%, 85.1%);
+    --background: hsl(40, 9.09%, 6.47%);
+    --foreground: hsl(34.5, 60.61%, 87.06%);
+    --card: hsl(20, 12%, 9.8%);
+    --card-foreground: hsl(34.5, 60.61%, 87.06%);
+    --popover: hsl(40, 9.09%, 6.47%);
+    --popover-foreground: hsl(34.5, 60.61%, 87.06%);
+    --primary: hsl(60, 100%, 67.06%);
+    --primary-foreground: hsl(42, 39.22%, 20%);
+    --secondary: hsl(20, 12%, 9.8%);
+    --secondary-foreground: hsl(27.89, 49.65%, 71.96%);
+    --muted: hsl(20, 12%, 9.8%);
+    --muted-foreground: hsl(27.89, 49.65%, 71.96%);
+    --accent: hsl(49.96, 100%, 51.96%);
+    --accent-foreground: hsl(24, 39.82%, 22.16%);
+    --destructive: hsl(359.58, 79.01%, 64.51%);
+    --destructive-foreground: hsl(349.57, 100%, 90.98%);
+    --border: hsl(26, 24.19%, 24.31%);
+    --input: hsl(26, 24.19%, 24.31%);
+    --ring: hsl(26, 24.19%, 24.31%);
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border scroll-smooth;
+  }
+
+  body {
+    @apply antialiased bg-background text-foreground font-serif;
+  }
+
+  img {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-drag: none;
+    user-drag: none;
+  }
+}

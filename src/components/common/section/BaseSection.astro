@@ -1,0 +1,5 @@
+---
+const { class: className } = Astro.props;
+---
+
+<section class:list={["grid w-full h-fit p-3", className]}><slot /></section>

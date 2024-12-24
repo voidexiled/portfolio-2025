@@ -1,0 +1,20 @@
+---
+import { ArrowUpRight } from "lucide-astro";
+
+const { href, name, title, target } = Astro.props;
+---
+
+<a href={href} title={title} aria-label={name} target={target}>
+  <span class="relative inline-flex group">
+    <span
+      class="absolute inline-flex transition-all z-[2] opacity-0 group-hover:opacity-100"
+    >
+      <ArrowUpRight />
+    </span>
+    <span
+      class="relative inline-flex transition-all z-[1] blur-none group-hover:blur-xs"
+    >
+      <slot />
+    </span>
+  </span>
+</a>

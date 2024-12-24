@@ -1,0 +1,47 @@
+---
+import { ClientRouter } from "astro:transitions";
+
+const { title, lang } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang ?? "es"} class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="canonical" href="https://example.com/es/" />
+    <link rel="alternate" hreflang="es" href="https://jesusjalomo.dev/es/" />
+    <link rel="alternate" hreflang="en" href="https://jesusjalomo.dev/en/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta
+      name="description"
+      content="Jesús Jalomo, 22 años, Desarrollador Front-End, Estudiante de Ingeniería en Sistemas Computacionales."
+    />
+    <meta name="author" content="Francisco Jesús Jalomo Chavez" />
+    <meta
+      name="keywords"
+      content="Jesus Jalomo, Desarrollador Front-End, Front-End, React, Next.js, Astro, Typescript, Javascript, Node.js, Svelte, CSS, TailwindCSS, HTML, Web, Web Development, Web Design, Web Development, Front-End Development, Pagina, Portfolio, Personal, Personal Website, Personal Portfolio, Personal Website, Personal Portfolio Website"
+    />
+    <title>{title}</title>
+    <ClientRouter />
+  </head>
+  <body class="grid relative">
+    <!-- <div
+      class="absolute top-0 z-[-2] h-screen w-full bg-background bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
+    > -->
+
+    <main class="container lg:px-20 pb-10 mx-auto">
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style>
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>

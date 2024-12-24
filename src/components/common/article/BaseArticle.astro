@@ -1,0 +1,15 @@
+---
+const { class: className, isHero, ...rest } = Astro.props;
+---
+
+<article
+  class:list={[
+    "flex flex-col p-5 rounded-xl relative w-full",
+    !isHero &&
+      "md:border md:border-border/30 md:bg-card/30 md:backdrop-blur-3xl",
+    className,
+  ]}
+  {...rest}
+>
+  <slot />
+</article>

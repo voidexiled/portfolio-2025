@@ -1,0 +1,92 @@
+---
+import SocialMediaIcon from "@/components/common/SocialMediaIcon.astro";
+
+import BaseSection from "@/components/common/section/BaseSection.astro";
+
+import { Facebook, Github, Mail, ArrowUpRight, Linkedin } from "lucide-astro";
+import BaseArticle from "@/components/common/article/BaseArticle.astro";
+---
+
+<BaseSection class="mt-16">
+  <BaseArticle class="mr-auto w-md border-none bg-transparent" isHero={true}>
+    <a
+      href="https://jesusjalomo.vercel.app/CV_Francisco_Jesus_Jalomo_Chavez.pdf"
+      target="_blank"
+      title="Enlace de descarga de currículum vitae"
+      class="absolute inline-flex self-end z-10 text-sm text-primary hover:text-primary/90 underline-offset-2 decoration-primary transition-all hover:underline font-light"
+      ><span>Currículum Vitae</span><ArrowUpRight class="w-4 h-4" />
+    </a>
+    <figure
+      class="rounded-full overflow-hidden border-2 border-border/30 flex items-center justify-center w-fit h-fit p-0.5"
+    >
+      <img
+        src="/jesusjalomo.webp"
+        alt="Foto de perfil de Jesus Jalomo"
+        class="aspect-square object-cover rounded-full w-16 h-16"
+      />
+    </figure>
+    <h1 class="text-2xl font-bold leading-14 text-accent/90 text-balance">
+      Francisco Jesús Jalomo Chavez
+    </h1>
+
+    <span class="text-base text-foreground/80 w-sm mb-0.5">
+      Desarrollador Front-End.
+    </span>
+    <span class="text-base text-foreground/80 w-sm mb-0.5">
+      Estudiante de Ingeniería en Sistemas Computacionales.
+    </span>
+
+    <!-- <span class="text-sm text-muted-foreground/80">22 años</span> -->
+    <main
+      class="flex flex-row items-center justify-start px-2 py-0.5 rounded-md border border-border/30 bg-accent/10 my-4 gap-1 w-fit"
+    >
+      <span class="inline-flex h-3 w-3 items-center">
+        <span
+          class="absolute inline-flex h-2 w-2 animate-ping rounded-full opacity-75 bg-lime-400"
+        ></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-lime-400"
+        ></span>
+      </span>
+      <span class="text-sm text-foreground/90 font-semibold"
+        >Disponible para trabajar</span
+      >
+    </main>
+
+    <footer
+      class="flex flex-row items-center justify-start gap-3 text-muted-foreground/60"
+    >
+      <SocialMediaIcon
+        href="https://www.linkedin.com/in/jesus-jalomo-chavez-1b1a0b219/"
+        name="linkedin_link"
+        title="Enlace de perfil de LinkedIn"
+        target="_blank"
+      >
+        <Linkedin />
+      </SocialMediaIcon>
+      <SocialMediaIcon
+        href="https://www.github.com/voidexiled"
+        name="github_link"
+        title="Enlace de perfil de GitHub"
+        target="_blank"
+      >
+        <Github />
+      </SocialMediaIcon>
+      <SocialMediaIcon
+        href="mailto:jalomo.chavez18@outlook.com"
+        name="mail_link"
+        title="Contactar por correo electrónico"
+        target="_blank"
+      >
+        <Mail />
+      </SocialMediaIcon>
+      <!-- <SocialMediaIcon
+            href="https://jesusjalomo.vercel.app/CV_Francisco_Jesus_Jalomo_Chavez.pdf"
+            name="curriculum_vitae_link"
+            title="Enlace de descarga de currículum vitae"
+            target="_blank"
+          >
+            <Scroll />
+          </SocialMediaIcon> -->
+    </footer>
+  </BaseArticle>
+</BaseSection>

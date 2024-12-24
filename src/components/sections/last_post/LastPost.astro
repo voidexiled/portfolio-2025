@@ -1,0 +1,18 @@
+---
+import BaseSection from "@/components/common/section/BaseSection.astro";
+import BaseArticle from "@/components/common/article/BaseArticle.astro";
+import { Sparkles } from "lucide-astro";
+import BaseArticleTitle from "@/components/common/article/BaseArticleTitle.astro";
+import BaseArticleHeader from "@/components/common/article/BaseArticleHeader.astro";
+---
+
+<BaseSection class="flex flex-col">
+  <BaseArticle class="gap-4">
+    <BaseArticleHeader>
+      <BaseArticleTitle>
+        <Sparkles class="inline-flex w-4 h-4" />
+        Último post
+      </BaseArticleTitle>
+    </BaseArticleHeader>
+  </BaseArticle>
+</BaseSection>

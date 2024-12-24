@@ -1,0 +1,71 @@
+---
+import BaseSection from "@/components/common/section/BaseSection.astro";
+import BaseArticle from "@/components/common/article/BaseArticle.astro";
+import { Briefcase, Sparkles } from "lucide-astro";
+import BaseArticleTitle from "@/components/common/article/BaseArticleTitle.astro";
+import BaseArticleHeader from "@/components/common/article/BaseArticleHeader.astro";
+import BaseArticleBody from "@/components/common/article/BaseArticleBody.astro";
+
+type Job = {
+  src: string;
+  company: string;
+  position: string;
+  date_start: string;
+  date_end: string;
+  description: string;
+};
+const jobs: Job[] = [
+  {
+    src: "/jobs/europartners.webp",
+    company: "Europartners Group",
+    position: "Intern",
+    date_start: "ago 2022",
+    date_end: "dec 2022",
+    description: "Desarrollador Front-End",
+  },
+];
+---
+
+<BaseSection>
+  <BaseArticle class="gap-4">
+    <BaseArticleHeader>
+      <BaseArticleTitle>
+        <Briefcase class="inline-flex w-4 h-4" />
+        Experiencia
+      </BaseArticleTitle>
+    </BaseArticleHeader>
+    <BaseArticleBody class="flex flex-col">
+      <main class="flex flex-col p-2">
+        {
+          jobs.map((job) => (
+            <article class="flex flex-row overflow-hidden w-full h-fit items-center">
+              <header class="flex flex-row items-center gap-4 mr-4">
+                <figure>
+                  <img
+                    class="aspect-square h-8 rounded-lg"
+                    src={job.src}
+                    alt={job.company.concat(" logo")}
+                  />
+                </figure>
+              </header>
+              <main class="flex flex-row gap-4 mr-4 items-center grow">
+                <h3 class="text-base font-medium">{job.company}</h3>
+                <h4 class="text-xs text-muted-foreground/80">{job.position}</h4>
+              </main>
+              <footer class="flex flex-row items-center gap-1">
+                <span class="text-xs text-muted-foreground/80">
+                  {job.date_start}
+                </span>
+
+                <span class="text-xs text-muted-foreground/80">—</span>
+                <span class="text-xs text-muted-foreground/80">
+                  {job.date_end}
+                </span>
+              </footer>
+            </article>
+          ))
+        }
+      </main>
+    </BaseArticleBody>
+  </BaseArticle>
+</BaseSection>
