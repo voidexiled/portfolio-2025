@@ -6,7 +6,7 @@ img: /banners/tablasloteriamx.online_banner.webp
 readtime: 5
 author: Jesús Jalomo
 tags: [frontend, vite, tool]
-URL: lottery-utilities-online.vercel.app
+URL: https://lottery-utilities-online.vercel.app/
 repoURL: https://github.com/voidexiled/tablasloteriamx.online
 date: enero de 2023
 ---

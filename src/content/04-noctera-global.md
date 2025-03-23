@@ -6,7 +6,7 @@ img: /banners/noctera-global_banner.webp
 readtime: 8
 author: Jesús Jalomo
 tags: [fullstack, nextjs, prisma, sql]
-URL: #
+URL: "#"
 repoURL: https://github.com/voidexiled/labs-sys
 date: marzo de 2025
 ---
