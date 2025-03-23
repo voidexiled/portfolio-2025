@@ -1,5 +1,5 @@
 ---
-title: Labs Sys
+title: Labs Sys (Prototipo)
 description: Aplicación tipo Microsoft Teams / Moodle para administrar alumnos, profesores, cursos, actividades, calificaciones, asistencias y material de los laboratorios hecho especificamente para la carrera de Sistemas Computacionales en el ITCM (Instituto Tecnológico de Ciudad Madero).
 thumb: /thumbs/labs-sys_thumb.webp
 img: /banners/labs-sys_banner.webp

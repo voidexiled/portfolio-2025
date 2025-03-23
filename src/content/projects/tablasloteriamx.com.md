@@ -6,7 +6,7 @@ img: /banners/tablasloteriamx.com_banner.webp
 readtime: 5
 author: Jesús Jalomo
 tags: [frontend, astro, ecommerce]
-URL: https://tablasloteriamx.com/
+URL: https://tablasloteriamx.vercel.app/
 repoURL: https://github.com/voidexiled/tablasloteriamx.com
 date: enero de 2023
 ---
@@ -27,7 +27,7 @@ Es una plataforma de compra de tablas de lotería en México.
 
 ## Enlaces
 
-- [Sitio web](https://tablasloteriamx.com/)
+- [Sitio web](https://tablasloteriamx.vercel.app/)
 - [GitHub](https://github.com/voidexiled/tablasloteriamx.com)
 
 ## Licencia

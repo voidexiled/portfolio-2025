@@ -6,7 +6,7 @@ img: /banners/tablasloteriamx.online_banner.webp
 readtime: 5
 author: Jesús Jalomo
 tags: [frontend, vite, tool]
-URL: https://tablasloteriamx.online/
+URL: lottery-utilities-online.vercel.app
 repoURL: https://github.com/voidexiled/tablasloteriamx.online
 date: enero de 2023
 ---
@@ -27,7 +27,7 @@ Es una herramienta de generación de tablas de lotería con personalización de 
 
 ## Enlaces
 
-- [Sitio web](https://tablasloteriamx.online/)
+- [Sitio web](lottery-utilities-online.vercel.app)
 - [GitHub](https://github.com/voidexiled/tablasloteriamx.online)
 
 ## Licencia
