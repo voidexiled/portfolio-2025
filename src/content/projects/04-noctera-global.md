@@ -6,8 +6,8 @@ img: /banners/noctera-global-web_banner.webp
 readtime: 8
 author: Jesús Jalomo
 tags: [fullstack, nextjs, prisma, sql, prisma]
-URL: https://github.com/voidexiled/noctera-global-web
-repoURL: https://github.com/voidexiled/noctera-global-web
+URL: https://github.com/voidexiled/noctera-web-next
+repoURL: https://github.com/voidexiled/noctera-web-next
 date: marzo de 2025
 ---
 
