@@ -12,6 +12,7 @@ export type PortfolioProject = {
   portfolioCopy: string;
   cvCopy: string;
   stack: string[];
+  cvStack?: string[];
   repoURL: string;
   liveURL?: string;
   order: number;
@@ -28,6 +29,7 @@ export const projects: PortfolioProject[] = [
     cvCopy:
       "Producto desktop comercial con React, TypeScript y Tauri para edición visual y generación de materiales de lotería mexicana; utilizado por 4 clientes Pro.",
     stack: ["TypeScript", "React", "Vite", "Tailwind CSS", "Tauri"],
+    cvStack: ["React", "TypeScript", "Tauri"],
     repoURL: "https://github.com/voidexiled/loteria-studio",
     order: 1,
     featured: true,
@@ -48,6 +50,7 @@ export const projects: PortfolioProject[] = [
       "Supabase",
       "TanStack Query",
     ],
+    cvStack: ["Next.js", "TypeScript", "Supabase"],
     repoURL: "https://github.com/voidexiled/Acadance",
     order: 2,
     featured: true,
@@ -68,6 +71,7 @@ export const projects: PortfolioProject[] = [
       "Firebase",
       "Zustand",
     ],
+    cvStack: ["Next.js", "TypeScript", "Firebase"],
     repoURL: "https://github.com/voidexiled/cotizador-3d",
     order: 3,
     featured: true,
@@ -81,6 +85,7 @@ export const projects: PortfolioProject[] = [
     cvCopy:
       "Plataforma web y sistemas de juego para un servidor Tibia personalizado sobre Canary, incluyendo Next.js, TypeScript, Prisma/MySQL, Lua y un Battle Pass integrado.",
     stack: ["TypeScript", "Next.js", "React", "Prisma", "MySQL", "Lua", "Canary"],
+    cvStack: ["Next.js", "TypeScript", "Prisma/MySQL", "Lua"],
     repoURL: "https://github.com/voidexiled/noctera",
     liveURL: "https://noctera-demo.vercel.app",
     order: 4,

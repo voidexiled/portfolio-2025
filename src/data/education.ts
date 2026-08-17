@@ -22,7 +22,7 @@ export const education: Education[] = [
     portfolioCopy:
       "Estudios universitarios cursados en Ingeniería en Sistemas Computacionales.",
     cvCopy:
-      "Estudios universitarios cursados hacia la carrera de Ingeniería en Sistemas Computacionales.",
+      "Estudios universitarios cursados en Ingeniería en Sistemas Computacionales; programa no concluido.",
   },
   {
     institution: "CETis 109",

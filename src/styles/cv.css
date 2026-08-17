@@ -267,7 +267,7 @@ a:hover {
 
   .cv-header {
     gap: 10mm;
-    padding-bottom: 4mm;
+    padding-bottom: 3.5mm;
   }
 
   .cv-name {
@@ -283,11 +283,11 @@ a:hover {
   .cv-meta,
   .cv-project-stack,
   .cv-project-links {
-    font-size: 8.2pt;
+    font-size: 8.6pt;
   }
 
   .cv-section {
-    margin-top: 3.6mm;
+    margin-top: 3.3mm;
   }
 
   .cv-section-title {
@@ -300,28 +300,28 @@ a:hover {
   .cv-project + .cv-project,
   .cv-education + .cv-education,
   .cv-language + .cv-language {
-    margin-top: 2mm;
+    margin-top: 1.6mm;
   }
 
   .cv-entry > p,
   .cv-project > p,
   .cv-education > p,
   .cv-language > p {
-    margin-top: 0.8mm;
+    margin-top: 0.6mm;
   }
 
   .cv-list {
-    margin-top: 0.8mm;
+    margin-top: 0.6mm;
   }
 
   .cv-list li + li,
   .cv-skill-list,
   .cv-language-list {
-    gap: 0.6mm;
+    gap: 0.45mm;
   }
 
   .cv-project-links {
-    margin-top: 0.7mm;
+    margin-top: 0.5mm;
   }
 
   .cv-section {

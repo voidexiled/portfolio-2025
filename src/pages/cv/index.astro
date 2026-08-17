@@ -37,6 +37,7 @@ const orderedLanguages = [...languages].sort((a, b) => a.order - b.order);
         {profile.phone && <a href={`tel:${phoneHref}`}>{profile.phone}</a>}
         <a href={profile.github}>github.com/voidexiled</a>
         <a href={profile.portfolio}>jesusjalomo.vercel.app</a>
+        <a href={profile.linkedin}>linkedin.com/in/jesus-jalomo-chavez-1b1a0b219</a>
       </address>
     </header>
 
@@ -59,7 +60,7 @@ const orderedLanguages = [...languages].sort((a, b) => a.order - b.order);
         <p>{independentExperience.cvCopy}</p>
         <ul class="cv-list">
           <li>
-            Desarrollo de aplicaciones web y desktop completas desde definición de producto y UX hasta implementación, validación y publicación.
+            Definición de producto y UX, implementación, validación y publicación de aplicaciones web y desktop completas.
           </li>
           <li>
             Desarrollo y mantenimiento de productos comerciales, incluyendo Lotería Studio, actualmente utilizado por 4 clientes Pro.
@@ -68,7 +69,7 @@ const orderedLanguages = [...languages].sort((a, b) => a.order - b.order);
             Uso de TypeScript, React, Next.js, Vite, Tauri, Tailwind CSS y herramientas relacionadas según las necesidades de cada producto.
           </li>
           <li>
-            Flujo de desarrollo asistido por Claude Code y OpenAI Codex para exploración, implementación, debugging, refactoring, documentación y pruebas, manteniendo la definición de requisitos y validación final.
+            Uso de Claude Code y OpenAI Codex para implementación, depuración, refactorización, documentación y pruebas, manteniendo a mi cargo la definición de requisitos y validación final.
           </li>
         </ul>
       </article>
@@ -94,8 +95,7 @@ const orderedLanguages = [...languages].sort((a, b) => a.order - b.order);
             <header class="cv-project-header">
               <h3>{project.title}</h3>
               <p class="cv-project-stack">
-                <span>{project.stack.join(", ")}</span>
-                <span>{project.status === "paused" ? "Pausado" : "Activo"}</span>
+                <span>{project.cvStack?.join(" · ") ?? project.stack.join(", ")}</span>
               </p>
             </header>
             <p>{project.cvCopy}</p>
@@ -124,14 +124,19 @@ const orderedLanguages = [...languages].sort((a, b) => a.order - b.order);
             <li>
               <strong>
                 {group.id === "workflow"
-                  ? "AI-assisted"
+                  ? "IA / workflow"
                   : group.id === "desktop-product"
                     ? "Desktop / producto"
                     : group.id === "backend-tooling"
                       ? "Tooling"
                       : group.label}
               </strong>
-              <span>{group.items.join(", ")}</span>
+              <span>
+                {(group.id === "workflow"
+                  ? group.items.filter((item) => item !== "AI-assisted development")
+                  : group.items
+                ).join(", ")}
+              </span>
             </li>
           ))
         }
