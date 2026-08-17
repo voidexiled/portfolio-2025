@@ -1,0 +1,18 @@
+---
+import { portfolioCopy } from "@/data/portfolio-copy";
+---
+
+<header class="portfolio-header">
+  <a class="portfolio-brand" href="/" aria-label="Francisco Jalomo home">
+    <span class="portfolio-brand-name">Francisco Jalomo</span>
+    <span class="portfolio-brand-role">Frontend Engineer</span>
+  </a>
+
+  <nav class="portfolio-nav" aria-label="Primary navigation">
+    <a href="#work">{portfolioCopy.nav.work}</a>
+    <a href="#experience">{portfolioCopy.nav.experience}</a>
+    <a href="#technologies">{portfolioCopy.nav.technologies}</a>
+    <a class="portfolio-nav-resume" href="/cv">{portfolioCopy.nav.resume}</a>
+    <a href="/cv/es" lang="es" aria-label="Ver currículum en español">{portfolioCopy.nav.spanish}</a>
+  </nav>
+</header>

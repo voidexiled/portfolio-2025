@@ -1,0 +1,32 @@
+---
+import { Github, Linkedin, Mail } from "lucide-astro";
+import { portfolioCopy } from "@/data/portfolio-copy";
+import { profile } from "@/data/profile";
+---
+
+<footer class="portfolio-footer">
+  <div>
+    <p class="portfolio-eyebrow">Let&apos;s work together</p>
+    <p class="portfolio-footer-message">{portfolioCopy.footer.message}</p>
+  </div>
+
+  <div class="portfolio-footer-links">
+    <a href={`mailto:${profile.email}`} aria-label={`Email ${profile.name}`}>
+      <Mail size={16} aria-hidden="true" />
+      <span>{portfolioCopy.footer.email}</span>
+    </a>
+    <a href={profile.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+      <Github size={16} aria-hidden="true" />
+      <span>{portfolioCopy.footer.github}</span>
+    </a>
+    <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+      <Linkedin size={16} aria-hidden="true" />
+      <span>{portfolioCopy.footer.linkedin}</span>
+    </a>
+    <a href="/cv">
+      <span>{portfolioCopy.footer.resume}</span>
+    </a>
+  </div>
+
+  <p class="portfolio-footer-location">{portfolioCopy.footer.location}</p>
+</footer>

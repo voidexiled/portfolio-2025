@@ -1,71 +1,64 @@
 ---
-import BaseSection from "@/components/common/section/BaseSection.astro";
-import BaseArticle from "@/components/common/article/BaseArticle.astro";
-import { Briefcase, Sparkles } from "lucide-astro";
-import BaseArticleTitle from "@/components/common/article/BaseArticleTitle.astro";
-import BaseArticleHeader from "@/components/common/article/BaseArticleHeader.astro";
-import BaseArticleBody from "@/components/common/article/BaseArticleBody.astro";
+import { portfolioCopy } from "@/data/portfolio-copy";
+import { experience } from "@/data/experience";
 
-type Job = {
-  src: string;
-  company: string;
-  position: string;
-  date_start: string;
-  date_end: string;
-  description: string;
+const orderedExperience = [...experience];
+const monthLabels: Record<string, string> = {
+  "01": "Jan",
+  "02": "Feb",
+  "03": "Mar",
+  "04": "Apr",
+  "05": "May",
+  "06": "Jun",
+  "07": "Jul",
+  "08": "Aug",
+  "09": "Sep",
+  "10": "Oct",
+  "11": "Nov",
+  "12": "Dec",
 };
-const jobs: Job[] = [
-  {
-    src: "/jobs/europartners.webp",
-    company: "Europartners Group",
-    position: "Intern",
-    date_start: "ago 2022",
-    date_end: "dec 2022",
-    description: "Desarrollador Front-End",
-  },
-];
+
+const formatDate = (value: string) => {
+  const [year, month] = value.split("-");
+  return month ? `${monthLabels[month]} ${year}` : year;
+};
+
+const formatDateRange = (start: string, end?: string | null) =>
+  `${formatDate(start)} - ${end ? formatDate(end) : "Present"}`;
 ---
 
-<BaseSection>
-  <BaseArticle class="gap-4">
-    <BaseArticleHeader>
-      <BaseArticleTitle>
-        <Briefcase class="inline-flex w-4 h-4" />
-        Experiencia
-      </BaseArticleTitle>
-    </BaseArticleHeader>
-    <BaseArticleBody class="flex flex-col">
-      <main class="flex flex-col p-2">
-        {
-          jobs.map((job) => (
-            <article class="flex flex-row overflow-hidden w-full h-fit items-center">
-              <header class="flex flex-row items-center gap-4 mr-4">
-                <figure>
-                  <img
-                    class="aspect-square h-8 rounded-lg"
-                    src={job.src}
-                    alt={job.company.concat(" logo")}
-                  />
-                </figure>
-              </header>
-              <main class="flex flex-row gap-4 mr-4 items-center grow">
-                <h3 class="text-base font-medium">{job.company}</h3>
-                <h4 class="text-xs text-muted-foreground/80">{job.position}</h4>
-              </main>
-              <footer class="flex flex-row items-center gap-1">
-                <span class="text-xs text-muted-foreground/80">
-                  {job.date_start}
-                </span>
+<section id="experience" class="portfolio-section" aria-labelledby="experience-heading">
+  <div class="portfolio-section-heading">
+    <p class="portfolio-eyebrow">02 / background</p>
+    <h2 id="experience-heading">{portfolioCopy.sections.experience}</h2>
+  </div>
 
-                <span class="text-xs text-muted-foreground/80">—</span>
-                <span class="text-xs text-muted-foreground/80">
-                  {job.date_end}
-                </span>
-              </footer>
-            </article>
-          ))
-        }
-      </main>
-    </BaseArticleBody>
-  </BaseArticle>
-</BaseSection>
+  <div class="portfolio-experience-list">
+    {
+      orderedExperience.map((entry, index) => {
+        const copy = portfolioCopy.experience[entry.id as keyof typeof portfolioCopy.experience];
+        const isFeatured = index === 0;
+
+        return (
+          <article class:list={["portfolio-experience-entry", { "portfolio-experience-entry-featured": isFeatured }]}>
+            <div class="portfolio-experience-marker" aria-hidden="true"></div>
+            <div class="portfolio-experience-content">
+              <div class="portfolio-experience-heading">
+                <div>
+                  {entry.id !== "independent" && <p class="portfolio-eyebrow">{entry.organization}</p>}
+                  <h3>{copy.title}</h3>
+                </div>
+                <p class="portfolio-experience-meta">
+                  <span>{formatDateRange(entry.start, entry.end)}</span>
+                  <span>{entry.location}</span>
+                </p>
+              </div>
+              <p class="portfolio-experience-summary">{copy.summary}</p>
+              {"currentWork" in copy && <p class="portfolio-experience-current">{copy.currentWork}</p>}
+            </div>
+          </article>
+        );
+      })
+    }
+  </div>
+</section>

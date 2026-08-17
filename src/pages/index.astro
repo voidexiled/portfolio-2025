@@ -1,15 +1,24 @@
 ---
 import "../index.css";
+import "../styles/portfolio.css";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import SiteFooter from "@/components/portfolio/SiteFooter.astro";
+import SiteHeader from "@/components/portfolio/SiteHeader.astro";
 import Presentation from "@/components/sections/presentation/Presentation.astro";
 import Projects from "@/components/sections/projects/Projects.astro";
 import Experience from "@/components/sections/experience/Experience.astro";
-import LastPost from "@/components/sections/last_post/LastPost.astro";
+import Technologies from "@/components/portfolio/Technologies.astro";
 ---
 
-<BaseLayout title="Jesus Jalomo" lang="es">
+<BaseLayout
+  title="Francisco Jesús Jalomo Chávez — Frontend Engineer"
+  description="Frontend Engineer focused on TypeScript and React, building product-focused web and desktop applications."
+  lang="en"
+>
+  <SiteHeader />
   <Presentation />
-  <Experience />
   <Projects />
-  <!-- <LastPost />  -->
+  <Experience />
+  <Technologies />
+  <SiteFooter />
 </BaseLayout>

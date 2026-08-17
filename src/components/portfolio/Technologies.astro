@@ -1,0 +1,34 @@
+---
+import { portfolioCopy } from "@/data/portfolio-copy";
+import { skillGroups } from "@/data/skills";
+
+const orderedSkillGroups = [...skillGroups].sort((a, b) => a.order - b.order);
+---
+
+<section id="technologies" class="portfolio-section portfolio-technologies" aria-labelledby="technologies-heading">
+  <div class="portfolio-section-heading">
+    <p class="portfolio-eyebrow">03 / toolkit</p>
+    <h2 id="technologies-heading">{portfolioCopy.sections.technologies}</h2>
+  </div>
+
+  <div class="technology-grid">
+    {
+      orderedSkillGroups.map((group) => {
+        const items =
+          group.id === "workflow"
+            ? group.items.filter((item) => item === "Claude Code" || item === "OpenAI Codex")
+            : group.items;
+
+        return (
+          <article class="technology-group">
+            <h3>{portfolioCopy.technologyGroups[group.id as keyof typeof portfolioCopy.technologyGroups] ?? group.label}</h3>
+            <ul>
+              {items.map((item) => <li>{item}</li>)}
+            </ul>
+            {group.id === "workflow" && <p class="technology-note">{portfolioCopy.workflowNote}</p>}
+          </article>
+        );
+      })
+    }
+  </div>
+</section>

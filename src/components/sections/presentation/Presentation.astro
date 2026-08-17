@@ -1,92 +1,51 @@
 ---
-import SocialMediaIcon from "@/components/common/SocialMediaIcon.astro";
-
-import BaseSection from "@/components/common/section/BaseSection.astro";
-
-import { Facebook, Github, Mail, ArrowUpRight, Linkedin } from "lucide-astro";
-import BaseArticle from "@/components/common/article/BaseArticle.astro";
+import { ArrowUpRight, Github, Linkedin, Mail, MapPin } from "lucide-astro";
+import { portfolioCopy } from "@/data/portfolio-copy";
+import { profile } from "@/data/profile";
 ---
 
-<BaseSection class="mt-16">
-  <BaseArticle class="mr-auto w-md border-none bg-transparent" isHero={true}>
-    <a
-      href="https://github.com/voidexiled/portfolio-2025/releases"
-      target="_blank"
-      title="Enlace de descarga de currículum vitae"
-      class="absolute inline-flex self-end z-10 text-sm text-primary hover:text-primary/90 underline-offset-2 decoration-primary transition-all hover:underline font-light"
-      ><span>Currículum Vitae</span><ArrowUpRight class="w-4 h-4" />
-    </a>
-    <figure
-      class="rounded-full overflow-hidden border-2 border-border/30 flex items-center justify-center w-fit h-fit p-0.5"
-    >
-      <img
-        src="/jesusjalomo.webp"
-        alt="Foto de perfil de Jesus Jalomo"
-        class="aspect-square object-cover rounded-full w-16 h-16"
-      />
-    </figure>
-    <h1 class="text-2xl font-bold leading-14 text-accent/90 text-balance">
-      Francisco Jesús Jalomo Chavez
-    </h1>
+<section class="portfolio-hero" aria-labelledby="hero-heading">
+  <div class="portfolio-hero-copy">
+    <p class="portfolio-eyebrow">Frontend Engineer · Product-focused engineering</p>
+    <h1 id="hero-heading">{profile.name}</h1>
+    <p class="portfolio-hero-role">{profile.role}</p>
+    <p class="portfolio-hero-lede">{portfolioCopy.hero.headline}</p>
+    <p class="portfolio-hero-secondary">{portfolioCopy.hero.secondary}</p>
 
-    <span class="text-base text-foreground/80 w-sm mb-0.5">
-      Desarrollador Front-End.
-    </span>
-    <span class="text-base text-foreground/80 w-sm mb-0.5">
-      Estudiante de Ingeniería en Sistemas Computacionales.
-    </span>
+    <div class="portfolio-hero-actions">
+      <a class="portfolio-button portfolio-button-primary" href="/cv">
+        {portfolioCopy.hero.viewResume}
+        <ArrowUpRight size={17} aria-hidden="true" />
+      </a>
+      <a class="portfolio-button portfolio-button-secondary" href={profile.github} target="_blank" rel="noopener noreferrer">
+        {portfolioCopy.hero.viewGithub}
+        <Github size={17} aria-hidden="true" />
+      </a>
+    </div>
 
-    <!-- <span class="text-sm text-muted-foreground/80">22 años</span> -->
-    <main
-      class="flex flex-row items-center justify-start px-2 py-0.5 rounded-md border border-border/30 bg-accent/10 my-4 gap-1 w-fit"
-    >
-      <span class="inline-flex h-3 w-3 items-center">
-        <span
-          class="absolute inline-flex h-2 w-2 animate-ping rounded-full opacity-75 bg-lime-400"
-        ></span>
-        <span class="relative inline-flex rounded-full h-2 w-2 bg-lime-400"
-        ></span>
-      </span>
-      <span class="text-sm text-foreground/90 font-semibold"
-        >Disponible para trabajar</span
-      >
-    </main>
+    <div class="portfolio-hero-links" aria-label="Additional contact links">
+      <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+        <Linkedin size={16} aria-hidden="true" />
+        <span>{portfolioCopy.hero.linkedin}</span>
+      </a>
+      <a href={`mailto:${profile.email}`} aria-label={`Email ${profile.name}`}>
+        <Mail size={16} aria-hidden="true" />
+        <span>{portfolioCopy.hero.email}</span>
+      </a>
+    </div>
+  </div>
 
-    <footer
-      class="flex flex-row items-center justify-start gap-3 text-muted-foreground/60"
-    >
-      <SocialMediaIcon
-        href="https://www.linkedin.com/in/jesus-jalomo-chavez-1b1a0b219/"
-        name="linkedin_link"
-        title="Enlace de perfil de LinkedIn"
-        target="_blank"
-      >
-        <Linkedin />
-      </SocialMediaIcon>
-      <SocialMediaIcon
-        href="https://www.github.com/voidexiled"
-        name="github_link"
-        title="Enlace de perfil de GitHub"
-        target="_blank"
-      >
-        <Github />
-      </SocialMediaIcon>
-      <SocialMediaIcon
-        href="mailto:jalomo.chavez18@outlook.com"
-        name="mail_link"
-        title="Contactar por correo electrónico"
-        target="_blank"
-      >
-        <Mail />
-      </SocialMediaIcon>
-      <!-- <SocialMediaIcon
-            href="https://jesusjalomo.vercel.app/CV_Francisco_Jesus_Jalomo_Chavez.pdf"
-            name="curriculum_vitae_link"
-            title="Enlace de descarga de currículum vitae"
-            target="_blank"
-          >
-            <Scroll />
-          </SocialMediaIcon> -->
-    </footer>
-  </BaseArticle>
-</BaseSection>
+  <aside class="portfolio-hero-aside" aria-label="Availability and location">
+    <img
+      class="portfolio-avatar"
+      src="/jesusjalomo.webp"
+      width="80"
+      height="80"
+      alt={profile.name}
+    />
+    <div class="portfolio-hero-meta">
+      <p><MapPin size={16} aria-hidden="true" /> {portfolioCopy.hero.location}</p>
+      <p><span class="portfolio-availability-dot" aria-hidden="true"></span> {portfolioCopy.hero.availability}</p>
+    </div>
+  </aside>
+</section>
