@@ -1,0 +1,184 @@
+---
+import CvLayout from "@/layouts/CvLayout.astro";
+import { cvCopy, type CvLanguageId, type CvLocale, type CvProjectId } from "@/data/cv-copy";
+import { education } from "@/data/education";
+import { experience } from "@/data/experience";
+import { languages } from "@/data/languages";
+import { profile } from "@/data/profile";
+import { projects } from "@/data/projects";
+import { skillGroups } from "@/data/skills";
+
+type Props = {
+  locale: CvLocale;
+};
+
+const { locale } = Astro.props;
+const copy = cvCopy[locale];
+const phoneHref = profile.phone?.replace(/[^\d+]/g, "");
+const independentExperience = experience[0];
+const europartnersExperience = experience[1];
+const featuredProjects = projects
+  .filter((project) => project.featured)
+  .sort((a, b) => a.order - b.order);
+const orderedSkills = [...skillGroups].sort((a, b) => a.order - b.order);
+const orderedLanguages = [...languages].sort((a, b) => a.order - b.order);
+const localizedLocation =
+  locale === "en" ? profile.location.replace("México", "Mexico") : profile.location;
+const alternateLinks = [
+  { hrefLang: "en", href: "https://jesusjalomo.vercel.app/cv" },
+  { hrefLang: "es", href: "https://jesusjalomo.vercel.app/cv/es" },
+  { hrefLang: "x-default", href: "https://jesusjalomo.vercel.app/cv" },
+];
+
+const formatDateValue = (value: string) => copy.months[value] ?? value;
+const formatDateRange = (start: string, end?: string | null) =>
+  `${formatDateValue(start)} - ${end ? formatDateValue(end) : copy.present}`;
+---
+
+<CvLayout
+  title="Francisco Jesús Jalomo Chávez - Frontend Engineer"
+  description={copy.description}
+  canonical={`https://jesusjalomo.vercel.app${locale === "en" ? "/cv" : "/cv/es"}`}
+  lang={locale}
+  alternateLinks={alternateLinks}
+>
+  <main class="cv-page">
+    <header class="cv-header">
+      <div class="cv-heading">
+        <h1 class="cv-name">{profile.name}</h1>
+        <p class="cv-role">{profile.role}</p>
+        <p class="cv-stack">{copy.headerStack}</p>
+      </div>
+
+      <address class="cv-contact">
+        <span>{localizedLocation}</span>
+        <a href={`mailto:${profile.email}`}>{profile.email}</a>
+        {profile.phone && <a href={`tel:${phoneHref}`}>{profile.phone}</a>}
+        <a href={profile.github}>github.com/voidexiled</a>
+        <a href={profile.portfolio}>jesusjalomo.vercel.app</a>
+        <a href={profile.linkedin}>linkedin.com/in/jesus-jalomo-chavez-1b1a0b219</a>
+      </address>
+    </header>
+
+    <section class="cv-section" aria-labelledby="profile-heading">
+      <h2 id="profile-heading" class="cv-section-title">{copy.labels.profile}</h2>
+      <p>{copy.profile}</p>
+    </section>
+
+    <section class="cv-section" aria-labelledby="experience-heading">
+      <h2 id="experience-heading" class="cv-section-title">{copy.labels.experience}</h2>
+
+      <article class="cv-entry">
+        <header class="cv-entry-header">
+          <h3>{copy.experience.independent.title}</h3>
+          <p class="cv-meta">
+            <span>{copy.remote}</span>
+            <span>{formatDateRange(independentExperience.start, independentExperience.end)}</span>
+          </p>
+        </header>
+        <p>{copy.experience.independent.summary}</p>
+        <ul class="cv-list">
+          {copy.experience.independent.bullets.map((bullet) => <li>{bullet}</li>)}
+        </ul>
+      </article>
+
+      <article class="cv-entry">
+        <header class="cv-entry-header">
+          <h3>{copy.experience.europartners.title}</h3>
+          <p class="cv-meta">
+            <span>{europartnersExperience.organization}</span>
+            <span>{copy.remote}</span>
+            <span>{formatDateRange(europartnersExperience.start, europartnersExperience.end)}</span>
+          </p>
+        </header>
+        <p>{copy.experience.europartners.summary}</p>
+      </article>
+    </section>
+
+    <section class="cv-section" aria-labelledby="projects-heading">
+      <h2 id="projects-heading" class="cv-section-title">{copy.labels.projects}</h2>
+      {
+        featuredProjects.map((project) => (
+          <article class="cv-project">
+            <header class="cv-project-header">
+              <h3>{project.title}</h3>
+              <p class="cv-project-stack">
+                <span>{project.cvStack?.join(" · ") ?? project.stack.join(", ")}</span>
+              </p>
+            </header>
+            <p>{copy.projects[project.id as CvProjectId]}</p>
+            <p class="cv-project-links">
+              <span>
+                {copy.labels.repository}:
+                <a href={project.repoURL}>{project.repoURL.replace("https://", "")}</a>
+              </span>
+              {project.liveURL && (
+                <span>
+                  {copy.labels.demo}:
+                  <a href={project.liveURL}>{project.liveURL.replace("https://", "")}</a>
+                </span>
+              )}
+            </p>
+          </article>
+        ))
+      }
+    </section>
+
+    <section class="cv-section" aria-labelledby="skills-heading">
+      <h2 id="skills-heading" class="cv-section-title">{copy.labels.technologies}</h2>
+      <ul class="cv-skill-list">
+        {
+          orderedSkills.map((group) => (
+            <li>
+              <strong>{copy.technologies[group.id] ?? group.label}</strong>
+              <span>
+                {(group.id === "workflow"
+                  ? group.items.filter((item) => item !== "AI-assisted development")
+                  : group.items
+                ).join(", ")}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="cv-section" aria-labelledby="education-heading">
+      <h2 id="education-heading" class="cv-section-title">{copy.labels.education}</h2>
+      <article class="cv-education">
+        <header class="cv-education-header">
+          <h3>{education[0].institution}</h3>
+          <p class="cv-meta">{copy.education.itcmProgram}</p>
+        </header>
+        <p>{copy.education.itcmCopy}</p>
+      </article>
+      <article class="cv-education">
+        <header class="cv-education-header">
+          <h3>{education[1].institution}</h3>
+          <p class="cv-meta">
+            <span>{copy.education.cetisProgram}</span>
+            <span>{formatDateRange(education[1].start ?? "", education[1].end)}</span>
+          </p>
+        </header>
+      </article>
+    </section>
+
+    <section class="cv-section" aria-labelledby="languages-heading">
+      <h2 id="languages-heading" class="cv-section-title">{copy.labels.languages}</h2>
+      <ul class="cv-language-list">
+        {
+          orderedLanguages.map((language) => {
+            const languageCopy = copy.languages[language.id as CvLanguageId];
+
+            return (
+              <li class="cv-language">
+                <strong>{languageCopy.name}</strong>
+                <span>{languageCopy.level}</span>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </section>
+  </main>
+</CvLayout>

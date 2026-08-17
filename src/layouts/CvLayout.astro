@@ -6,9 +6,10 @@ type Props = {
   description: string;
   canonical?: string;
   lang?: string;
+  alternateLinks?: Array<{ hrefLang: string; href: string }>;
 };
 
-const { title, description, canonical, lang = "es" } = Astro.props;
+const { title, description, canonical, lang = "es", alternateLinks = [] } = Astro.props;
 ---
 
 <!doctype html>
@@ -20,6 +21,9 @@ const { title, description, canonical, lang = "es" } = Astro.props;
     <meta name="author" content="Francisco Jesús Jalomo Chávez" />
     <meta name="robots" content="index,follow" />
     {canonical && <link rel="canonical" href={canonical} />}
+    {alternateLinks.map((alternate) => (
+      <link rel="alternate" hreflang={alternate.hrefLang} href={alternate.href} />
+    ))}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
