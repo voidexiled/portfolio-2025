@@ -1,0 +1,175 @@
+---
+import CvLayout from "@/layouts/CvLayout.astro";
+import { education } from "@/data/education";
+import { experience } from "@/data/experience";
+import { languages } from "@/data/languages";
+import { profile } from "@/data/profile";
+import { projects } from "@/data/projects";
+import { skillGroups } from "@/data/skills";
+
+const phoneHref = profile.phone?.replace(/[^\d+]/g, "");
+const independentExperience = experience[0];
+const europartnersExperience = experience[1];
+const featuredProjects = projects
+  .filter((project) => project.featured)
+  .sort((a, b) => a.order - b.order);
+const orderedSkills = [...skillGroups].sort((a, b) => a.order - b.order);
+const orderedLanguages = [...languages].sort((a, b) => a.order - b.order);
+---
+
+<CvLayout
+  title="Francisco Jesús Jalomo Chávez - Frontend Engineer"
+  description="CV de Francisco Jesús Jalomo Chávez, Frontend Engineer especializado en TypeScript y React."
+  canonical="https://jesusjalomo.vercel.app/cv"
+  lang="es"
+>
+  <main class="cv-page">
+    <header class="cv-header">
+      <div class="cv-heading">
+        <h1 class="cv-name">{profile.name}</h1>
+        <p class="cv-role">{profile.role}</p>
+        <p class="cv-stack">TypeScript, React, Next.js, Tauri</p>
+      </div>
+
+      <address class="cv-contact">
+        <span>{profile.location}</span>
+        <a href={`mailto:${profile.email}`}>{profile.email}</a>
+        {profile.phone && <a href={`tel:${phoneHref}`}>{profile.phone}</a>}
+        <a href={profile.github}>github.com/voidexiled</a>
+        <a href={profile.portfolio}>jesusjalomo.vercel.app</a>
+      </address>
+    </header>
+
+    <section class="cv-section" aria-labelledby="profile-heading">
+      <h2 id="profile-heading" class="cv-section-title">Perfil</h2>
+      <p>{profile.summary.cv}</p>
+    </section>
+
+    <section class="cv-section" aria-labelledby="experience-heading">
+      <h2 id="experience-heading" class="cv-section-title">Experiencia</h2>
+
+      <article class="cv-entry">
+        <header class="cv-entry-header">
+          <h3>Desarrollador de Software Independiente</h3>
+          <p class="cv-meta">
+            <span>{independentExperience.location}</span>
+            <span>2025 - Actualidad</span>
+          </p>
+        </header>
+        <p>{independentExperience.cvCopy}</p>
+        <ul class="cv-list">
+          <li>
+            Desarrollo de aplicaciones web y desktop completas desde definición de producto y UX hasta implementación, validación y publicación.
+          </li>
+          <li>
+            Desarrollo y mantenimiento de productos comerciales, incluyendo Lotería Studio, actualmente utilizado por 4 clientes Pro.
+          </li>
+          <li>
+            Uso de TypeScript, React, Next.js, Vite, Tauri, Tailwind CSS y herramientas relacionadas según las necesidades de cada producto.
+          </li>
+          <li>
+            Flujo de desarrollo asistido por Claude Code y OpenAI Codex para exploración, implementación, debugging, refactoring, documentación y pruebas, manteniendo la definición de requisitos y validación final.
+          </li>
+        </ul>
+      </article>
+
+      <article class="cv-entry">
+        <header class="cv-entry-header">
+          <h3>Trainee de Desarrollo Web</h3>
+          <p class="cv-meta">
+            <span>{europartnersExperience.organization}</span>
+            <span>{europartnersExperience.location}</span>
+            <span>ago 2022 - dic 2022</span>
+          </p>
+        </header>
+        <p>{europartnersExperience.cvCopy}</p>
+      </article>
+    </section>
+
+    <section class="cv-section" aria-labelledby="projects-heading">
+      <h2 id="projects-heading" class="cv-section-title">Proyectos seleccionados</h2>
+      {
+        featuredProjects.map((project) => (
+          <article class="cv-project">
+            <header class="cv-project-header">
+              <h3>{project.title}</h3>
+              <p class="cv-project-stack">
+                <span>{project.stack.join(", ")}</span>
+                <span>{project.status === "paused" ? "Pausado" : "Activo"}</span>
+              </p>
+            </header>
+            <p>{project.cvCopy}</p>
+            <p class="cv-project-links">
+              <span>
+                Repositorio:
+                <a href={project.repoURL}>{project.repoURL.replace("https://", "")}</a>
+              </span>
+              {project.liveURL && (
+                <span>
+                  Demo:
+                  <a href={project.liveURL}>{project.liveURL.replace("https://", "")}</a>
+                </span>
+              )}
+            </p>
+          </article>
+        ))
+      }
+    </section>
+
+    <section class="cv-section" aria-labelledby="skills-heading">
+      <h2 id="skills-heading" class="cv-section-title">Tecnologías</h2>
+      <ul class="cv-skill-list">
+        {
+          orderedSkills.map((group) => (
+            <li>
+              <strong>
+                {group.id === "workflow"
+                  ? "AI-assisted"
+                  : group.id === "desktop-product"
+                    ? "Desktop / producto"
+                    : group.id === "backend-tooling"
+                      ? "Tooling"
+                      : group.label}
+              </strong>
+              <span>{group.items.join(", ")}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="cv-section" aria-labelledby="education-heading">
+      <h2 id="education-heading" class="cv-section-title">Educación</h2>
+      <article class="cv-education">
+        <header class="cv-education-header">
+          <h3>{education[0].institution}</h3>
+          <p class="cv-meta">{education[0].program}</p>
+        </header>
+        <p>{education[0].cvCopy}</p>
+      </article>
+      <article class="cv-education">
+        <header class="cv-education-header">
+          <h3>{education[1].institution}</h3>
+          <p class="cv-meta">
+            <span>{education[1].program}</span>
+            <span>2017 - 2020</span>
+          </p>
+        </header>
+      </article>
+    </section>
+
+    <section class="cv-section" aria-labelledby="languages-heading">
+      <h2 id="languages-heading" class="cv-section-title">Idiomas</h2>
+      <ul class="cv-language-list">
+        {
+          orderedLanguages.map((language) => (
+            <li class="cv-language">
+              <strong>{language.name}</strong>
+              <span>{language.level}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </main>
+</CvLayout>
