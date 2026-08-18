@@ -1,3 +1,10 @@
+import type { ImageMetadata } from "astro";
+
+import acadanceImage from "@/assets/projects/acadance.png";
+import cotizador3dImage from "@/assets/projects/cotizador-3d.png";
+import loteriaStudioImage from "@/assets/projects/loteria-studio.png";
+import nocteraImage from "@/assets/projects/noctera.png";
+
 export type ProjectStatus =
   | "active"
   | "in-progress"
@@ -15,9 +22,7 @@ export type PortfolioProject = {
   cvStack?: string[];
   repoURL: string;
   liveURL?: string;
-  image: string;
-  imageWidth: number;
-  imageHeight: number;
+  image: ImageMetadata;
   order: number;
   featured: boolean;
 };
@@ -33,9 +38,7 @@ export const projects: PortfolioProject[] = [
     portfolioStack: ["React", "TypeScript", "Tauri"],
     cvStack: ["React", "TypeScript", "Tauri"],
     repoURL: "https://github.com/voidexiled/loteria-studio",
-    image: "/projects/loteria-studio.png",
-    imageWidth: 2556,
-    imageHeight: 1391,
+    image: loteriaStudioImage,
     order: 1,
     featured: true,
   },
@@ -56,9 +59,7 @@ export const projects: PortfolioProject[] = [
     portfolioStack: ["Next.js", "TypeScript", "Supabase"],
     cvStack: ["Next.js", "TypeScript", "Supabase"],
     repoURL: "https://github.com/voidexiled/Acadance",
-    image: "/projects/acadance.png",
-    imageWidth: 2224,
-    imageHeight: 1341,
+    image: acadanceImage,
     order: 2,
     featured: true,
   },
@@ -79,9 +80,7 @@ export const projects: PortfolioProject[] = [
     portfolioStack: ["Next.js", "TypeScript", "Firebase"],
     cvStack: ["Next.js", "TypeScript", "Firebase"],
     repoURL: "https://github.com/voidexiled/cotizador-3d",
-    image: "/projects/cotizador-3d.png",
-    imageWidth: 2222,
-    imageHeight: 1344,
+    image: cotizador3dImage,
     order: 3,
     featured: true,
   },
@@ -96,9 +95,7 @@ export const projects: PortfolioProject[] = [
     cvStack: ["Next.js", "TypeScript", "Prisma/MySQL", "Lua"],
     repoURL: "https://github.com/voidexiled/noctera",
     liveURL: "https://noctera-demo.vercel.app",
-    image: "/projects/noctera.png",
-    imageWidth: 2223,
-    imageHeight: 1347,
+    image: nocteraImage,
     order: 4,
     featured: true,
   },

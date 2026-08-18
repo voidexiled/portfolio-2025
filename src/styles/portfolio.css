@@ -514,6 +514,24 @@ body {
   white-space: nowrap;
 }
 
+.skip-link {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.7rem 0.9rem;
+  background: var(--portfolio-amber);
+  color: hsl(42, 39%, 15%);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
 :focus-visible {
   outline: 2px solid var(--portfolio-amber);
   outline-offset: 3px;

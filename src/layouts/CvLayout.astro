@@ -7,9 +7,19 @@ type Props = {
   canonical?: string;
   lang?: string;
   alternateLinks?: Array<{ hrefLang: string; href: string }>;
+  socialImage?: string;
 };
 
-const { title, description, canonical, lang = "es", alternateLinks = [] } = Astro.props;
+const {
+  title,
+  description,
+  canonical,
+  lang = "es",
+  alternateLinks = [],
+  socialImage = "/og/portfolio.png",
+} = Astro.props;
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, Astro.site ?? Astro.url).toString();
+const socialImageUrl = new URL(socialImage, Astro.site ?? Astro.url).toString();
 ---
 
 <!doctype html>
@@ -20,14 +30,30 @@ const { title, description, canonical, lang = "es", alternateLinks = [] } = Astr
     <meta name="description" content={description} />
     <meta name="author" content="Francisco Jesús Jalomo Chávez" />
     <meta name="robots" content="index,follow" />
-    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="canonical" href={canonicalUrl} />
     {alternateLinks.map((alternate) => (
       <link rel="alternate" hreflang={alternate.hrefLang} href={alternate.href} />
     ))}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={socialImageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageUrl} />
     <title>{title}</title>
   </head>
   <body class="cv-body">
+    <a class="skip-link" href="#main-content">{lang === "es" ? "Saltar al contenido" : "Skip to content"}</a>
     <slot />
   </body>
 </html>
+
+<script>
+  document.querySelector<HTMLAnchorElement>(".skip-link")?.addEventListener("click", () => {
+    requestAnimationFrame(() => document.getElementById("main-content")?.focus());
+  });
+</script>

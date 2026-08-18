@@ -36,13 +36,14 @@ const formatDateRange = (start: string, end?: string | null) =>
 ---
 
 <CvLayout
-  title="Francisco Jesús Jalomo Chávez - Frontend Engineer"
+  title="Francisco Jesús Jalomo Chávez — Frontend Engineer"
   description={copy.description}
   canonical={`https://jesusjalomo.vercel.app${locale === "en" ? "/cv" : "/cv/es"}`}
   lang={locale}
   alternateLinks={alternateLinks}
+  socialImage="/og/portfolio.png"
 >
-  <main class="cv-page">
+  <main id="main-content" tabindex="-1" class="cv-page">
     <header class="cv-header">
       <div class="cv-heading">
         <h1 class="cv-name">{profile.name}</h1>

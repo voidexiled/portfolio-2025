@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { ArrowUpRight } from "lucide-astro";
 import { portfolioCopy } from "@/data/portfolio-copy";
 import { projects } from "@/data/projects";
@@ -20,10 +21,14 @@ const featuredProjects = projects.filter((project) => project.featured).sort((a,
       featuredProjects.map((project) => (
         <article class="portfolio-project-card">
           <div class="portfolio-project-image-frame">
-            <img
+            <Image
               src={project.image}
-              width={project.imageWidth}
-              height={project.imageHeight}
+              width={1200}
+              height={675}
+              fit="cover"
+              position="center"
+              format="webp"
+              quality={80}
               loading="lazy"
               alt={`${project.title} project screenshot`}
             />
