@@ -80,6 +80,7 @@ export const projects: PortfolioProject[] = [
     portfolioStack: ["Next.js", "TypeScript", "Firebase"],
     cvStack: ["Next.js", "TypeScript", "Firebase"],
     repoURL: "https://github.com/voidexiled/cotizador-3d",
+    liveURL: "https://cotizador-3d-kappa.vercel.app/",
     image: cotizador3dImage,
     order: 3,
     featured: true,
